@@ -1,0 +1,281 @@
+:root {
+  --brick: #8a3f2e;
+  --brick-dark: #6b2f21;
+  --green: #4a5d3a;
+  --green-dark: #384728;
+  --cream: #faf7f2;
+  --text: #2b2b26;
+  --muted: #6b6a63;
+  --border: #e3ddd2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text);
+  background: var(--cream);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--brick);
+}
+
+a:hover {
+  color: var(--brick-dark);
+}
+
+.site-header {
+  background: var(--green-dark);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.site-header .header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.site-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.site-nav {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.site-nav a {
+  color: #f1efe9;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.25rem 0;
+  border-bottom: 2px solid transparent;
+}
+
+.site-nav a:hover,
+.site-nav a.active {
+  border-bottom-color: var(--brick);
+  color: #fff;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.hero {
+  position: relative;
+  margin: 0 -1.5rem 2.5rem;
+}
+
+.hero img {
+  width: 100%;
+  height: clamp(220px, 38vw, 420px);
+  object-fit: cover;
+  display: block;
+}
+
+.hero-caption {
+  position: absolute;
+  inset: auto 0 0 0;
+  background: linear-gradient(0deg, rgba(43, 43, 38, 0.75), transparent);
+  color: #fff;
+  padding: 2rem 1.5rem 1.25rem;
+}
+
+.hero-caption h1 {
+  margin: 0 0 0.25rem;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+}
+
+.hero-caption p {
+  margin: 0;
+  color: #f1efe9;
+  font-size: 1.05rem;
+}
+
+.page-header {
+  padding: 2.5rem 0 1rem;
+  border-bottom: 3px solid var(--brick);
+  margin-bottom: 2rem;
+}
+
+.page-header h1 {
+  margin: 0 0 0.4rem;
+  color: var(--green-dark);
+}
+
+.page-header p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.card h2, .card h3 {
+  margin-top: 0;
+  color: var(--green-dark);
+}
+
+.card a.button,
+a.button {
+  display: inline-block;
+  margin-top: 0.5rem;
+  background: var(--green);
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.card a.button:hover,
+a.button:hover {
+  background: var(--green-dark);
+  color: #fff;
+}
+
+section {
+  margin-bottom: 2.5rem;
+}
+
+section h2 {
+  color: var(--green-dark);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.4rem;
+}
+
+.doc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.doc-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+}
+
+.doc-list .doc-name {
+  font-weight: 600;
+}
+
+.doc-list .doc-status {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.board-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.board-list li {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.board-list .role {
+  display: block;
+  font-weight: 700;
+  color: var(--green-dark);
+}
+
+.board-list .name {
+  color: var(--muted);
+}
+
+.placeholder-note {
+  background: #fff8e8;
+  border: 1px solid #e8d9a8;
+  color: #6b5a1e;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-block {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-block dt {
+  font-weight: 700;
+  color: var(--green-dark);
+  margin-top: 0.75rem;
+}
+
+.contact-block dt:first-child {
+  margin-top: 0;
+}
+
+.contact-block dd {
+  margin: 0.15rem 0 0;
+}
+
+.site-footer {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--border);
+  margin-top: 3rem;
+}
+
+@media (max-width: 600px) {
+  .site-header .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
