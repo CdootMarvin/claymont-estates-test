@@ -113,56 +113,56 @@ main {
   padding: 0 2rem;
 }
 
-/* Hero */
+/* Hero: photo banner (no text on it) + solid intro band below */
 .hero {
-  position: relative;
   margin: 0;
+  background: var(--forest);
 }
 
 .hero img {
   width: 100%;
-  height: min(620px, max(380px, 46vw));
+  aspect-ratio: 21 / 8;
   object-fit: cover;
-  object-position: center 30%;
+  object-position: center 42%;
   display: block;
   filter: saturate(0.92) contrast(1.02);
 }
 
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(22,33,26,0.05) 0%, rgba(22,33,26,0.02) 30%, rgba(22,33,26,0.7) 62%, rgba(22,33,26,0.95) 100%);
-}
-
-.hero-caption {
-  position: absolute;
-  inset: auto 0 0 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 0 2rem 2.25rem;
+.hero-intro {
+  background: var(--forest);
   color: var(--text-light);
+  text-align: center;
+  padding: 3.5rem 2rem 4rem;
 }
 
-.hero-caption .eyebrow {
+.hero-intro .full {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.hero-intro .eyebrow {
   color: var(--brass-light);
 }
 
-.hero-caption h1 {
+.hero-intro h1 {
   margin: 0 0 0.85rem;
-  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-size: clamp(2.1rem, 4.5vw, 3.4rem);
   font-weight: 500;
-  max-width: 16ch;
 }
 
-.hero-caption p {
+.hero-intro p {
   margin: 0;
   font-size: 1.05rem;
   font-weight: 300;
   color: var(--muted-light);
-  max-width: 42ch;
+  max-width: 48ch;
+  margin: 0 auto;
+}
+
+@media (max-width: 640px) {
+  .hero img {
+    aspect-ratio: 4 / 3;
+  }
 }
 
 /* Sections */
@@ -409,18 +409,6 @@ a.link-arrow:hover {
   font-size: 0.78rem;
   letter-spacing: 0.05em;
   background: var(--forest);
-}
-
-@media (max-height: 680px) {
-  .hero img {
-    height: min(420px, max(320px, 46vw));
-  }
-  .hero-caption h1 {
-    font-size: clamp(1.8rem, 5vw, 2.6rem);
-  }
-  .hero-caption p {
-    display: none;
-  }
 }
 
 @media (max-width: 640px) {
