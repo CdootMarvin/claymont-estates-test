@@ -22,6 +22,26 @@
 
 body {
   background: var(--forest);
+  position: relative;
+}
+
+/* Restrained film-grain texture, uniform across the whole page */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxNDAnIGhlaWdodD0nMTQwJz48ZmlsdGVyIGlkPSduJz48ZmVUdXJidWxlbmNlIHR5cGU9J2ZyYWN0YWxOb2lzZScgYmFzZUZyZXF1ZW5jeT0nMC44NScgbnVtT2N0YXZlcz0nMicgc3RpdGNoVGlsZXM9J3N0aXRjaCcvPjxmZUNvbG9yTWF0cml4IHR5cGU9J3NhdHVyYXRlJyB2YWx1ZXM9JzAnLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0nMTAwJScgaGVpZ2h0PScxMDAlJyBmaWx0ZXI9J3VybCglMjNuKScvPjwvc3ZnPgo=");
+  background-repeat: repeat;
+  mix-blend-mode: overlay;
+  opacity: 0.05;
+}
+
+/* Soft radial glow on the deep-dark bands instead of flat fill */
+.hero-intro,
+.band-dark {
+  background: radial-gradient(ellipse 120% 140% at 50% -30%, var(--forest-3) 0%, var(--forest) 60%);
 }
 
 .test-badge {
