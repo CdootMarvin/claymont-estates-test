@@ -121,8 +121,9 @@ main {
 
 .hero img {
   width: 100%;
-  height: clamp(420px, 72vh, 760px);
+  height: clamp(380px, 58vh, 620px);
   object-fit: cover;
+  object-position: center 38%;
   display: block;
   filter: saturate(0.92) contrast(1.02);
 }
@@ -131,18 +132,17 @@ main {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(22,33,26,0.35) 0%, rgba(22,33,26,0.15) 40%, rgba(22,33,26,0.75) 100%);
+  background: linear-gradient(180deg, rgba(22,33,26,0.05) 0%, rgba(22,33,26,0.02) 38%, rgba(22,33,26,0.55) 68%, rgba(22,33,26,0.92) 100%);
 }
 
 .hero-caption {
   position: absolute;
-  inset: 0;
+  inset: auto 0 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
-  padding: 2rem;
+  padding: 0 2rem 3.5rem;
   color: var(--text-light);
 }
 
