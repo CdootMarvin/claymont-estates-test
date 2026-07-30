@@ -1,0 +1,32 @@
+{
+  "board": [
+    { "role": "President", "name": "" },
+    { "role": "Vice President", "name": "" },
+    { "role": "Treasurer", "name": "" },
+    { "role": "Secretary", "name": "" }
+  ],
+
+  "community": {
+    "description": "",
+    "mission": ""
+  },
+
+  "documents": [
+    { "name": "Declaration of Covenants, Conditions & Restrictions (CC&Rs)", "url": "", "status": "Coming soon" },
+    { "name": "Bylaws", "url": "", "status": "Coming soon" },
+    { "name": "Rules & Regulations", "url": "", "status": "Coming soon" },
+    { "name": "Architectural Guidelines", "url": "", "status": "Coming soon" },
+    { "name": "Meeting Minutes", "url": "", "status": "Coming soon" }
+  ],
+
+  "contact": {
+    "email": "claymontestates@gmail.com",
+    "addressLines": [
+      "Claymont Estates Residents Association",
+      "PO Box 6057",
+      "Chesterfield, MO 63006-6057"
+    ],
+    "phone": "",
+    "meetingSchedule": ""
+  }
+}
