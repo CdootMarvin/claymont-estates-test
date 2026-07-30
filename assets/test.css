@@ -1,20 +1,27 @@
 @import url('styles.css?v=4');
 
-/* Darker override palette for the /test page */
+/* All-dark override: former "light" sections become subtly lighter
+   shades of green/black instead of tan, so the page stays dark
+   throughout with rhythm coming from shade steps, not light/dark contrast. */
 :root {
-  --forest: #0b0f0a;
+  --forest: #0a0e09;
   --forest-2: #10160f;
   --forest-3: #171f14;
-  --cream: #efe9db;
-  --stone: #e2dac7;
+  --cream: #141a11;
+  --stone: #1c2417;
   --brass: #a67c45;
   --brass-light: #c9a66a;
-  --brick: #7a4c34;
-  --text-dark: #1a1a16;
+  --brick: #b98860;
+  --text-dark: #ece6d8;
+  --text-light: #ece6d8;
   --muted-light: #a9b39a;
-  --muted-dark: #6b6a5c;
-  --line-light: rgba(239, 233, 219, 0.12);
-  --line-dark: rgba(26, 26, 22, 0.12);
+  --muted-dark: #93997f;
+  --line-light: rgba(236, 230, 216, 0.1);
+  --line-dark: rgba(236, 230, 216, 0.09);
+}
+
+body {
+  background: var(--forest);
 }
 
 .test-badge {
