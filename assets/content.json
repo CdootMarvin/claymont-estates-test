@@ -1,11 +1,4 @@
 {
-  "board": [
-    { "role": "President", "name": "" },
-    { "role": "Vice President", "name": "" },
-    { "role": "Treasurer", "name": "" },
-    { "role": "Secretary", "name": "" }
-  ],
-
   "community": {
     "description": "",
     "mission": ""

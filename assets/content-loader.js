@@ -9,28 +9,9 @@ fetch('assets/content.json')
   .catch(function (err) { console.warn('content.json not loaded, showing placeholder text instead:', err); });
 
 function applyContent(data) {
-  try { renderBoard(data.board); } catch (e) { console.warn('board section skipped:', e); }
   try { renderCommunity(data.community); } catch (e) { console.warn('community section skipped:', e); }
   try { renderDocuments(data.documents); } catch (e) { console.warn('documents section skipped:', e); }
   try { renderContact(data.contact); } catch (e) { console.warn('contact section skipped:', e); }
-}
-
-function renderBoard(board) {
-  var list = document.querySelector('[data-field="board-list"]');
-  if (!list || !Array.isArray(board) || board.length === 0) return;
-  list.innerHTML = '';
-  board.forEach(function (member) {
-    var li = document.createElement('li');
-    var role = document.createElement('span');
-    role.className = 'role';
-    role.textContent = member.role || '';
-    var name = document.createElement('span');
-    name.className = 'name';
-    name.textContent = member.name && member.name.trim() ? member.name : '[Name]';
-    li.appendChild(role);
-    li.appendChild(name);
-    list.appendChild(li);
-  });
 }
 
 function renderCommunity(community) {
