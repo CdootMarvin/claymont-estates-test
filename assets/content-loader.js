@@ -69,9 +69,4 @@ function renderContact(contact) {
       addressEl.appendChild(document.createTextNode(line));
     });
   }
-
-  var meetingEl = document.querySelector('[data-field="meeting-schedule"]');
-  if (meetingEl && contact.meetingSchedule && contact.meetingSchedule.trim()) {
-    meetingEl.textContent = contact.meetingSchedule;
-  }
 }

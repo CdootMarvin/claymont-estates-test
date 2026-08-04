@@ -2,14 +2,14 @@
 
 This is the source for [claymontestates.org](https://www.claymontestates.org). It's a plain HTML/CSS site (no build step, no server) hosted on GitHub Pages.
 
-**If you just need to update contact info, the meeting schedule, or document links, you only need to edit one file: `assets/content.json`.** You don't need to touch any HTML, and you don't need to install anything — everything below can be done in a web browser on GitHub.com.
+**If you just need to update contact info or document links, you only need to edit one file: `assets/content.json`.** You don't need to touch any HTML, and you don't need to install anything — everything below can be done in a web browser on GitHub.com.
 
 ## How to edit content.json
 
 1. Go to the repository on GitHub.com and click on `assets/content.json`.
 2. Click the pencil icon ("Edit this file") in the top right of the file view.
 3. Make your change (see the field guide below).
-4. Scroll to the bottom, type a short summary of what you changed (e.g. "Update meeting schedule"), and click **Commit changes**.
+4. Scroll to the bottom, type a short summary of what you changed (e.g. "Update mailing address"), and click **Commit changes**.
 5. Give it 1-2 minutes, then refresh the live site to see it.
 
 You never need to touch `index.html`, `about.html`, `documents.html`, `contact.html`, or anything in `assets/` other than `content.json` (and adding PDFs to `assets/documents/`, see below).
@@ -31,7 +31,7 @@ Open `content.json` and you'll see something like this:
 - **`community.description`** — a paragraph about the neighborhood, shown on the About page.
 - **`community.mission`** — the HOA's mission statement, also on the About page.
 - **`documents`** — one entry per governing document. `status` is the small text shown next to the name (like "Coming soon"); `url` is where the PDF lives once you've uploaded one (see below). Leave `url` as `""` until you have a file uploaded.
-- **`contact.email`**, **`contact.addressLines`**, **`contact.phone`**, **`contact.meetingSchedule`** — shown on the Contact page. `addressLines` is a list, one line per entry, so it prints as a proper mailing address.
+- **`contact.email`**, **`contact.addressLines`** — shown on the Contact page. `addressLines` is a list, one line per entry, so it prints as a proper mailing address.
 
 ## Uploading document PDFs (bylaws, CC&Rs, minutes, etc.)
 
