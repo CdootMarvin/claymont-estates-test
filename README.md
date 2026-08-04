@@ -21,15 +21,13 @@ Open `content.json` and you'll see something like this:
 ```json
 {
   "community": {
-    "description": "",
-    "mission": ""
+    "description": ""
   },
   ...
 }
 ```
 
 - **`community.description`** — a paragraph about the neighborhood, shown on the home page.
-- **`community.mission`** — the HOA's mission statement, also on the home page.
 - **`documents`** — one entry per governing document. `status` is the small text shown next to the name (like "Coming soon"); `url` is where the PDF lives once you've uploaded one (see below). Leave `url` as `""` until you have a file uploaded.
 - **`contact.email`**, **`contact.addressLines`** — shown on the Contact page. `addressLines` is a list, one line per entry, so it prints as a proper mailing address.
 

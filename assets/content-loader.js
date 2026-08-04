@@ -20,10 +20,6 @@ function renderCommunity(community) {
   if (desc && community.description && community.description.trim()) {
     desc.textContent = community.description;
   }
-  var mission = document.querySelector('[data-field="mission-statement"]');
-  if (mission && community.mission && community.mission.trim()) {
-    mission.textContent = community.mission;
-  }
 }
 
 function renderDocuments(documents) {
