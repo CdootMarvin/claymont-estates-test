@@ -6,12 +6,9 @@
 
   "documents": [
     { "name": "Declaration of Covenants, Conditions & Restrictions (CC&Rs)", "url": "assets/documents/claymont-estates-indenture.pdf", "status": "" },
-    { "name": "Bylaws", "url": "", "status": "Coming soon" },
-    { "name": "Rules & Regulations", "url": "", "status": "Coming soon" },
     { "name": "Architectural Guidelines", "url": "assets/documents/architectural-review-board-guidelines-2013.pdf", "status": "" },
     { "name": "Architectural Project Criteria", "url": "assets/documents/architectural-project-criteria-2022.pdf", "status": "" },
-    { "name": "Architectural Review FAQ", "url": "assets/documents/architectural-review-faq.pdf", "status": "" },
-    { "name": "Meeting Minutes", "url": "", "status": "Coming soon" }
+    { "name": "Architectural Review FAQ", "url": "assets/documents/architectural-review-faq.pdf", "status": "" }
   ],
 
   "contact": {
