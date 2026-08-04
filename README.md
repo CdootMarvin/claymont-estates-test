@@ -12,7 +12,7 @@ This is the source for [claymontestates.org](https://www.claymontestates.org). I
 4. Scroll to the bottom, type a short summary of what you changed (e.g. "Update mailing address"), and click **Commit changes**.
 5. Give it 1-2 minutes, then refresh the live site to see it.
 
-You never need to touch `index.html`, `about.html`, `documents.html`, `contact.html`, or anything in `assets/` other than `content.json` (and adding PDFs to `assets/documents/`, see below).
+You never need to touch `index.html`, `documents.html`, `contact.html`, or anything in `assets/` other than `content.json` (and adding PDFs to `assets/documents/`, see below).
 
 ## Field guide
 
@@ -28,8 +28,8 @@ Open `content.json` and you'll see something like this:
 }
 ```
 
-- **`community.description`** — a paragraph about the neighborhood, shown on the About page.
-- **`community.mission`** — the HOA's mission statement, also on the About page.
+- **`community.description`** — a paragraph about the neighborhood, shown on the home page.
+- **`community.mission`** — the HOA's mission statement, also on the home page.
 - **`documents`** — one entry per governing document. `status` is the small text shown next to the name (like "Coming soon"); `url` is where the PDF lives once you've uploaded one (see below). Leave `url` as `""` until you have a file uploaded.
 - **`contact.email`**, **`contact.addressLines`** — shown on the Contact page. `addressLines` is a list, one line per entry, so it prints as a proper mailing address.
 
@@ -51,7 +51,7 @@ Open `content.json` and you'll see something like this:
 
 | Path | What it is |
 |---|---|
-| `index.html`, `about.html`, `documents.html`, `contact.html` | The four pages |
+| `index.html`, `documents.html`, `contact.html` | The three pages |
 | `assets/content.json` | **Editable content** — see above |
 | `assets/documents/` | **Upload PDFs here** |
 | `assets/content-loader.js` | Script that reads `content.json` and fills in the pages |
