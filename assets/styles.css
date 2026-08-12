@@ -441,3 +441,131 @@ a.link-arrow:hover {
     padding-bottom: 3.5rem;
   }
 }
+
+/* ---------- Motion ---------- */
+
+/* Sticky header gains a touch of depth once scrolled. Harmless with or
+   without JS: with no JS, .is-scrolled is simply never added. */
+.site-header {
+  transition: box-shadow 0.3s ease;
+}
+
+.site-header.is-scrolled {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* Arrow nudge on hover. The arrow is wrapped in <span class="arrow"> in
+   markup; if it isn't (older/edited-by-hand markup), this simply no-ops. */
+a.link-arrow .arrow {
+  display: inline-block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a.link-arrow .arrow {
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  a.link-arrow:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  /* Card hover lift */
+  .card {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.35s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    background: var(--stone);
+  }
+
+  /* Hero text: staggered entrance on load, no JS required */
+  .hero-intro .eyebrow,
+  .hero-intro h1,
+  .hero-intro p,
+  .page-hero .eyebrow,
+  .page-hero h1,
+  .page-hero p {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: hero-text-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .hero-intro .eyebrow, .page-hero .eyebrow { animation-delay: 0.1s; }
+  .hero-intro h1, .page-hero h1 { animation-delay: 0.22s; }
+  .hero-intro p, .page-hero p { animation-delay: 0.36s; }
+
+  @keyframes hero-text-in {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Hero photo: soft zoom-settle on load, no JS required */
+  .hero {
+    overflow: hidden;
+  }
+
+  .hero img {
+    transform: scale(1.06);
+    animation: hero-img-in 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes hero-img-in {
+    to { transform: scale(1); }
+  }
+}
+
+/* Scroll-triggered reveals. Gated behind html.js-reveal, which animations.js
+   sets immediately on load -- so if that script is ever missing or fails,
+   content simply renders visible with no motion instead of staying hidden. */
+@media (prefers-reduced-motion: no-preference) {
+  html.js-reveal .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  html.js-reveal .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  html.js-reveal .reveal-group > * {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  html.js-reveal .reveal-group.is-visible > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  html.js-reveal .reveal-group.is-visible > *:nth-child(1) { transition-delay: 0.05s; }
+  html.js-reveal .reveal-group.is-visible > *:nth-child(2) { transition-delay: 0.15s; }
+  html.js-reveal .reveal-group.is-visible > *:nth-child(3) { transition-delay: 0.25s; }
+  html.js-reveal .reveal-group.is-visible > *:nth-child(4) { transition-delay: 0.35s; }
+
+  /* Document / step lists: keyframe-based so items still stagger in even
+     when content-loader.js swaps them in after the list has already revealed */
+  @keyframes list-item-in {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  html.js-reveal .doc-list li,
+  html.js-reveal .steps li {
+    opacity: 0;
+  }
+
+  html.js-reveal .doc-list.is-visible li,
+  html.js-reveal .steps.is-visible li {
+    animation: list-item-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  html.js-reveal .doc-list.is-visible li:nth-child(1), html.js-reveal .steps.is-visible li:nth-child(1) { animation-delay: 0.05s; }
+  html.js-reveal .doc-list.is-visible li:nth-child(2), html.js-reveal .steps.is-visible li:nth-child(2) { animation-delay: 0.13s; }
+  html.js-reveal .doc-list.is-visible li:nth-child(3), html.js-reveal .steps.is-visible li:nth-child(3) { animation-delay: 0.21s; }
+  html.js-reveal .doc-list.is-visible li:nth-child(4), html.js-reveal .steps.is-visible li:nth-child(4) { animation-delay: 0.29s; }
+  html.js-reveal .doc-list.is-visible li:nth-child(5), html.js-reveal .steps.is-visible li:nth-child(5) { animation-delay: 0.37s; }
+  html.js-reveal .doc-list.is-visible li:nth-child(6), html.js-reveal .steps.is-visible li:nth-child(6) { animation-delay: 0.45s; }
+}
