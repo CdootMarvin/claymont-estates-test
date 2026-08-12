@@ -333,6 +333,30 @@ a.link-arrow:hover {
   font-family: 'Fraunces', Georgia, serif;
   font-size: 1.15rem;
   font-weight: 400;
+  text-decoration: none;
+  border-bottom: 1px solid var(--line-dark);
+  transition: border-color 0.2s ease;
+}
+
+/* Down-arrow (not the right-arrow used for page/site links elsewhere)
+   plus a brass accent instead of brick, so these read as downloads
+   rather than navigation -- deliberately close to but not identical to
+   the contact page's link styling. */
+.doc-list .doc-name::after {
+  content: "\2193";
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: var(--muted-dark);
+}
+
+.doc-list .doc-name:hover {
+  border-bottom-color: var(--brass-light);
+}
+
+.doc-list .doc-name:hover::after {
+  color: var(--brass-light);
 }
 
 .doc-list .doc-status {
@@ -467,6 +491,14 @@ a.link-arrow .arrow {
 
   a.link-arrow:hover .arrow {
     transform: translateX(4px);
+  }
+
+  .doc-list .doc-name::after {
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+  }
+
+  .doc-list .doc-name:hover::after {
+    transform: translateY(3px);
   }
 
   /* Card hover lift */
