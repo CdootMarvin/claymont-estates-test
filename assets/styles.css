@@ -499,18 +499,17 @@ a.link-arrow .arrow {
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Hero photo: soft zoom-settle on load, no JS required */
+  /* Hero photo: zoom-settle on load + scroll parallax, driven by the hero
+     photo block near the end of animations.js. Framing math needs the
+     current viewport size, so this stays in JS rather than pure CSS.
+     If JS never runs, the image just sits at its normal scale/position --
+     no permanent zoom, no motion. */
   .hero {
     overflow: hidden;
   }
 
   .hero img {
-    transform: scale(1.06);
-    animation: hero-img-in 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-
-  @keyframes hero-img-in {
-    to { transform: scale(1); }
+    will-change: transform;
   }
 }
 

@@ -44,4 +44,54 @@
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
   }
+
+  // Home page hero photo: zoom-settle on load, then a slow parallax drift
+  // as you scroll past it. The image is held permanently oversized so
+  // there's slack to pan within -- offset is clamped to that slack
+  // (recomputed from the live element size) so it can never show a gap.
+  // PARALLAX_RATE is tied to REST_SCALE so the pan reaches its full travel
+  // right around one hero-height of scrolling, instead of maxing out (and
+  // then sitting frozen) in the first ~100px like an untuned rate would.
+  var hero = document.querySelector('.hero');
+  var heroImg = hero ? hero.querySelector('img') : null;
+  if (heroImg && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var REST_SCALE = 1.15;
+    var START_SCALE = 1.21;
+    var PARALLAX_RATE = (REST_SCALE - 1) / 2;
+    var ENTRANCE_MS = 1200;
+    var entranceDone = false;
+    var loadStart = performance.now();
+
+    function slack() {
+      var h = hero.getBoundingClientRect().height;
+      return (h * REST_SCALE - h) / 2;
+    }
+
+    function applyTransform(scale) {
+      var offset = Math.max(-slack(), Math.min(slack(), window.scrollY * PARALLAX_RATE));
+      heroImg.style.transform = 'translateY(' + offset.toFixed(1) + 'px) scale(' + scale.toFixed(4) + ')';
+    }
+
+    function entranceFrame(now) {
+      var t = Math.min(1, (now - loadStart) / ENTRANCE_MS);
+      var eased = 1 - Math.pow(1 - t, 3);
+      applyTransform(START_SCALE + (REST_SCALE - START_SCALE) * eased);
+      if (t < 1) {
+        window.requestAnimationFrame(entranceFrame);
+      } else {
+        entranceDone = true;
+      }
+    }
+    window.requestAnimationFrame(entranceFrame);
+
+    var parallaxTicking = false;
+    window.addEventListener('scroll', function () {
+      if (!entranceDone || parallaxTicking) return;
+      parallaxTicking = true;
+      window.requestAnimationFrame(function () {
+        applyTransform(REST_SCALE);
+        parallaxTicking = false;
+      });
+    }, { passive: true });
+  }
 })();
