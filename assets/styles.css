@@ -128,6 +128,10 @@ main {
 }
 
 /* Hero: photo banner (no text on it) + solid intro band below */
+.hero-pin {
+  position: relative;
+}
+
 .hero {
   margin: 0;
   background: var(--forest);
@@ -531,17 +535,33 @@ a.link-arrow .arrow {
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Hero photo: zoom-settle on load + scroll parallax, driven by the hero
-     photo block near the end of animations.js. Framing math needs the
-     current viewport size, so this stays in JS rather than pure CSS.
-     If JS never runs, the image just sits at its normal scale/position --
-     no permanent zoom, no motion. */
+  /* Hero photo: pinned in place while .hero-intro rises up and over it,
+     with a slow continued zoom driven by the hero photo block near the
+     end of animations.js while it's pinned. The pin/cover itself is
+     pure CSS: sticky's "stuck" range is bounded by its containing
+     block, which is .hero-pin -- a wrapper around just .hero and
+     .hero-intro (see index.html) -- so .hero can only stay pinned for
+     .hero-intro's own height's worth of scroll, not the whole page.
+     .hero is the first element in that wrapper, so it's already at its
+     stuck offset before any scrolling starts. If JS never runs, the
+     image just sits at its normal scale -- the pin/cover still works
+     with no motion on the photo itself. */
   .hero {
+    position: sticky;
+    top: 0;
+    z-index: 1;
     overflow: hidden;
   }
 
   .hero img {
     will-change: transform;
+  }
+
+  .hero-intro {
+    position: relative;
+    z-index: 2;
+    border-radius: 28px 28px 0 0;
+    box-shadow: 0 -24px 40px rgba(0, 0, 0, 0.35);
   }
 }
 

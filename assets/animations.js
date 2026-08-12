@@ -45,52 +45,48 @@
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
-  // Home page hero photo: zoom-settle on load, then a slow parallax drift
-  // as you scroll past it. The image is held permanently oversized so
-  // there's slack to pan within -- offset is clamped to that slack
-  // (recomputed from the live element size) so it can never show a gap.
-  // PARALLAX_RATE is tied to REST_SCALE so the pan reaches its full travel
-  // right around one hero-height of scrolling, instead of maxing out (and
-  // then sitting frozen) in the first ~100px like an untuned rate would.
+  // Home page hero photo: zoom-settle on load, then a slow continued zoom
+  // while it's pinned (see the sticky/z-index rules in styles.css) and
+  // .hero-intro rises to cover it. Pure scale on an object-fit: cover
+  // image can never expose a gap -- scaling up only crops more -- so
+  // unlike a pan effect this needs no slack/clamp math at all.
   var hero = document.querySelector('.hero');
   var heroImg = hero ? hero.querySelector('img') : null;
   if (heroImg && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    var REST_SCALE = 1.15;
-    var START_SCALE = 1.21;
-    var PARALLAX_RATE = (REST_SCALE - 1) / 2;
-    var ENTRANCE_MS = 1200;
+    var REST_SCALE = 1.06;
+    var START_SCALE = 1.12;
+    var MAX_SCROLL_SCALE = 1.18;
+    var ENTRANCE_MS = 1000;
     var entranceDone = false;
     var loadStart = performance.now();
 
-    function slack() {
+    function applyScrollScale() {
       var h = hero.getBoundingClientRect().height;
-      return (h * REST_SCALE - h) / 2;
-    }
-
-    function applyTransform(scale) {
-      var offset = Math.max(-slack(), Math.min(slack(), window.scrollY * PARALLAX_RATE));
-      heroImg.style.transform = 'translateY(' + offset.toFixed(1) + 'px) scale(' + scale.toFixed(4) + ')';
+      var progress = Math.max(0, Math.min(1, window.scrollY / h));
+      var scale = REST_SCALE + (MAX_SCROLL_SCALE - REST_SCALE) * progress;
+      heroImg.style.transform = 'scale(' + scale.toFixed(4) + ')';
     }
 
     function entranceFrame(now) {
       var t = Math.min(1, (now - loadStart) / ENTRANCE_MS);
       var eased = 1 - Math.pow(1 - t, 3);
-      applyTransform(START_SCALE + (REST_SCALE - START_SCALE) * eased);
+      heroImg.style.transform = 'scale(' + (START_SCALE + (REST_SCALE - START_SCALE) * eased).toFixed(4) + ')';
       if (t < 1) {
         window.requestAnimationFrame(entranceFrame);
       } else {
         entranceDone = true;
+        applyScrollScale();
       }
     }
     window.requestAnimationFrame(entranceFrame);
 
-    var parallaxTicking = false;
+    var scaleTicking = false;
     window.addEventListener('scroll', function () {
-      if (!entranceDone || parallaxTicking) return;
-      parallaxTicking = true;
+      if (!entranceDone || scaleTicking) return;
+      scaleTicking = true;
       window.requestAnimationFrame(function () {
-        applyTransform(REST_SCALE);
-        parallaxTicking = false;
+        applyScrollScale();
+        scaleTicking = false;
       });
     }, { passive: true });
   }
